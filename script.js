@@ -50,8 +50,9 @@ const buttonEventComponent = (id, url) => {
         const selectedName = charElement.querySelector("h2").innerText // pl. Rick Sanchez, Morty Smith, Abradolf Lincler
         const selectedId = Number(charElement.querySelector("h4").innerText)
         const characterList = data.results
-        const selectedChar = characterList.find((char) => char.name === selectedId)
+        const selectedChar = characterList.find((char) => char.id === selectedId)
         selectedCharElement.innerHTML = selectedCharacterComponent(selectedChar)
+        
       }))
     })
   })
@@ -95,8 +96,10 @@ const init = () => {
     const charElements = document.querySelectorAll(".char")
     charElements.forEach(charElement => charElement.addEventListener("click", () => {
       const selectedName = charElement.querySelector("h2").innerText // pl. Rick Sanchez, Morty Smith, Abradolf Lincler
+      const selectedId = Number(charElement.querySelector("h4").innerText)
       const characterList = data.results
-      const selectedChar = characterList.find((char) => char.name === selectedName)
+      console.log(data.results);
+      const selectedChar = characterList.find((char) => char.id === selectedId)
       selectedCharElement.innerHTML = selectedCharacterComponent(selectedChar)
     }))
   })
